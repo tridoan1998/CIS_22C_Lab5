@@ -77,3 +77,119 @@ link = NULL;
        int size;
 
 };
+
+template<class stackdata>
+Stack<stackdata>::Stack()
+{
+    size = 0;
+    top = NULL;
+}
+
+template<class stackdata>
+Stack<stackdata>::~Stack()
+{
+    Node* a = NULL;
+    Node* b = top;
+    while(b != NULL)
+    {
+        b->link = a;
+        delete b;
+        b = a;
+    }
+}
+template<class stackdata>
+Stack<stackdata>::Stack(const Stack& S)
+{
+    size = S.size;
+    top = new Node(S.top->data);
+    Node* temp = S.top;
+    Node* stemp = top;
+    while(temp !=NULL)
+    {
+        temp = temp->link;
+        stemp->link = new Node(temp->data);
+        stemp = stemp->link;
+    }
+}
+
+template<class stackdata>
+Stack<stackdata>::pop()     //removeStart
+{
+    assert(size !=0);
+    if(size == 1)
+    {
+        delete top;
+        top = NULL;
+    }
+    else
+    {
+        Node* temp = top;
+        top = top-link;
+        delete temp;
+    }
+    size--;
+}
+
+tempplate<class stackdata>
+Stack<stackdata>::push(stackdata data)     //insertStart
+{
+    Node* N = new Node(data);
+    if(size == 0)
+    {
+        top = N;
+    }
+    else
+    {
+        N->link = top;
+        top = N;
+    }
+    size++;
+}
+
+template <class stackdata>
+bool Stack<stackdata>::operator==(const Stack &S)
+{
+	if(size != S.size)
+		return false;
+	Node* temp1 = top;
+	Node*temp2 = S.top;
+	while(temp1 !=NULL)
+	{
+		if(temp1 != temp2)
+			return false;
+		temp1 = temp1->link;
+		temp2 = temp2->link;
+	}
+	return true;
+}
+template<class stackdata>
+stackdata Stack<stackdata>::peek() const	//getFront
+{
+    asset(!empty());
+    return top->data;
+}
+
+template <class stackdata>
+int Stack<stackdata>::getSize() const
+{
+    return size;
+}
+
+template <class stackdata>
+bool Stack<stackdata>::empty() const
+{
+    return size == 0;
+}
+
+template<class stackdata>
+void Stack<stackdata>::print() const
+{
+    Node* temp = top;
+    while(temp !=NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->data;
+    }
+    cout << endl;
+}
+#endif /* QUEUE_H_ */
