@@ -60,6 +60,7 @@ class Stack
        void print() const;
        //prints the elements in the stack each element separate by a blank space to stdout
 
+        void reversePrint() const;
     private:
        struct Node {
            stackdata data;
@@ -76,6 +77,7 @@ link = NULL;
        Node* top;
        int size;
 
+    void revesePrint() const;
 };
 
 template<class stackdata>
@@ -84,6 +86,9 @@ Stack<stackdata>::Stack()
     size = 0;
     top = NULL;
 }
+
+
+
 
 template<class stackdata>
 Stack<stackdata>::~Stack()
@@ -97,6 +102,9 @@ Stack<stackdata>::~Stack()
         b = a;
     }
 }
+
+
+
 template<class stackdata>
 Stack<stackdata>::Stack(const Stack& S)
 {
@@ -112,6 +120,7 @@ Stack<stackdata>::Stack(const Stack& S)
     }
 }
 
+
 template<class stackdata>
 Stack<stackdata>::pop()     //removeStart
 {
@@ -124,11 +133,12 @@ Stack<stackdata>::pop()     //removeStart
     else
     {
         Node* temp = top;
-        top = top-link;
+        top = top->link;
         delete temp;
     }
     size--;
 }
+
 
 tempplate<class stackdata>
 Stack<stackdata>::push(stackdata data)     //insertStart
@@ -146,6 +156,7 @@ Stack<stackdata>::push(stackdata data)     //insertStart
     size++;
 }
 
+
 template <class stackdata>
 bool Stack<stackdata>::operator==(const Stack &S)
 {
@@ -162,6 +173,10 @@ bool Stack<stackdata>::operator==(const Stack &S)
 	}
 	return true;
 }
+
+
+
+
 template<class stackdata>
 stackdata Stack<stackdata>::peek() const	//getFront
 {
@@ -169,10 +184,14 @@ stackdata Stack<stackdata>::peek() const	//getFront
     return top->data;
 }
 
+
 template <class stackdata>
 int Stack<stackdata>::getSize() const
 {
     return size;
+}
+{
+    
 }
 
 template <class stackdata>
@@ -191,5 +210,11 @@ void Stack<stackdata>::print() const
         temp = temp->data;
     }
     cout << endl;
+}
+
+void reversePrint() const;
+{
+    assert(!empty());
+    
 }
 #endif /* QUEUE_H_ */
