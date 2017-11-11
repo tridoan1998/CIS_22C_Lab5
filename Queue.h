@@ -2,7 +2,7 @@
  * List.h
  *
  *	Khang Vinh Tran, Tri Doan
- *  CIS 22C, Lab2
+ *  CIS 22C, Lab5
  */
 
 #ifndef QUEUE_H_

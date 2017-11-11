@@ -1,8 +1,8 @@
 /*
  * Queue.cpp
  *
- *  Created on: Oct 29, 2017
- *      Author: $$$$$$$$$$$$$$$$$$$$
+ *	Khang Vinh Tran, Tri Doan
+ *  CIS 22C, Lab5
  */
 
 
